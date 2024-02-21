@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     float destroyDelay = 4f;
     float moveSpeed = 30f;
-    float damage = 35f;
+    int damage = 35;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +25,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy") {
             //give damage decrease
+            other.GetComponent<Health>().TakeDamage(damage);
             Destroy(gameObject);
         }
     }

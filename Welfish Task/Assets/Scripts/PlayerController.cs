@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
         playerInput.Movement.Move.performed += OnMove;
         playerInput.Movement.Move.canceled += OnMove;
         playerInput.Attack.Attack.started += OnAttack;
+        playerInput.Movement.Move.performed += OnAttack;
         playerInput.Attack.Attack.canceled += OnAttack;
 
     }

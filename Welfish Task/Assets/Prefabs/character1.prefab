@@ -1918,9 +1918,11 @@ GameObject:
   - component: {fileID: 304651377200312741}
   - component: {fileID: 229661883}
   - component: {fileID: 5819801304712755523}
+  - component: {fileID: 229661886}
+  - component: {fileID: 229661891}
   m_Layer: 2
   m_Name: character1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1996,6 +1998,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+--- !u!114 &229661886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6454127380093350245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940114567c6d133428b85bf8a6387e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellPoint: {fileID: 5576711613388113252}
+  speelAPrefab: {fileID: 1271764609937064, guid: 8b47f39d91e61384889cff33839361dc, type: 3}
+  spellSfxs:
+  - {fileID: 8300000, guid: 303aec82ae3c52b4bb05f9c6b1f4b311, type: 3}
+  - {fileID: 8300000, guid: 67e2b346cd63e0341ab8ba20222dfd51, type: 3}
+  - {fileID: 8300000, guid: f1648789e282d0947af995506f93b3b3, type: 3}
+  - {fileID: 8300000, guid: 7688289e790970d48849f22368d9f7c7, type: 3}
+  - {fileID: 8300000, guid: a03d984a997f70844b70e52eec202006, type: 3}
+--- !u!114 &229661891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6454127380093350245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 674be33f2e639ed498ef3cb87d21202a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseHealth: 100
+  currentHealth: 35
 --- !u!1 &6540308084844104469
 GameObject:
   m_ObjectHideFlags: 0

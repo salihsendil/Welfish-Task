@@ -11,6 +11,8 @@ public class ZombieController : MonoBehaviour
     public NavMeshAgent enemy;
     PlayerController playerController;
     [SerializeField] AudioClip hitSfx;
+    GameObject target;
+    int attackDamage = 15;
 
     // Start is called before the first frame update
     void Start()
@@ -25,12 +27,14 @@ public class ZombieController : MonoBehaviour
     void Update()
     {
         enemy.SetDestination(playerController.transform.position);
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag=="Player") {
             animator.SetBool(isAttackingHash, true);
+            target = other.gameObject;
         }
         else {
             animator.SetBool(isAttackingHash, false);
@@ -38,7 +42,6 @@ public class ZombieController : MonoBehaviour
 
         if (other.tag == "Projectile") {
             AudioSource.PlayClipAtPoint(hitSfx, transform.position, 1.3f);
-            Debug.Log("zombie evet");
         }
     }
 
@@ -46,8 +49,13 @@ public class ZombieController : MonoBehaviour
     {
         if (other.tag == "Player") {
             animator.SetBool(isAttackingHash, false);
+            target = other.gameObject;
         }
     }
 
+    public void AttackTarget()
+    {
+        target.GetComponent<Health>().TakeDamage(attackDamage);
+    }
 
 }
