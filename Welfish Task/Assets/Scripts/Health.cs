@@ -10,17 +10,9 @@ public class Health : MonoBehaviour
     public int BaseHealth { get => baseHealth;}
     public int CurrentHealth { get => currentHealth;}
 
-
-    // Start is called before the first frame update
     void Start()
     {
         currentHealth = baseHealth;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void TakeDamage(int damage)

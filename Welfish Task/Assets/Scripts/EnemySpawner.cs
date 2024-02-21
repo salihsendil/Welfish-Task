@@ -19,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] GameObject spawnVfx;
+    GameObject vfxInstantiate;
 
     private void Awake()
     {
@@ -42,13 +43,14 @@ public class EnemySpawner : MonoBehaviour
             spawnPoint = new Vector3(spawnPointX, 0f, spawnPointZ);
             //Debug.Log("x: " + spawnPointX);
             //Debug.Log("z: " + spawnPointZ);
+            vfxInstantiate = Instantiate(spawnVfx, spawnPoint + Vector3.up, Quaternion.identity) as GameObject;
             Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
-            spawnVfx.GetComponent<ParticleSystem>().Play();
-            if (spawnDelay > 1.5f) {
+            if (spawnDelay > 1f) {
                 spawnDelay -= Time.deltaTime;
             }
             Debug.Log(spawnDelay);
             yield return new WaitForSeconds(spawnDelay);
+            Destroy(vfxInstantiate);
         }
     }
 

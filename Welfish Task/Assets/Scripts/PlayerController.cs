@@ -29,12 +29,9 @@ public class PlayerController : MonoBehaviour
 
     //Attack Variables
     bool isAttackPressed;
-    bool isAttacking;
-
 
     //Getters and Setters
     public bool IsAttackPressed { get => isAttackPressed;}
-    public bool IsAttacking { get => isAttacking; set => isAttacking = value; }
 
     private void Awake()
     {
@@ -48,7 +45,7 @@ public class PlayerController : MonoBehaviour
         playerInput.Movement.Move.performed += OnMove;
         playerInput.Movement.Move.canceled += OnMove;
         playerInput.Attack.Attack.started += OnAttack;
-        playerInput.Movement.Move.performed += OnAttack;
+        playerInput.Attack.Attack.performed += OnAttack;
         playerInput.Attack.Attack.canceled += OnAttack;
 
     }
@@ -59,7 +56,6 @@ public class PlayerController : MonoBehaviour
         HandleGravity();
         HandleMovement();
         HandleAnimation();
-
         //Debug.Log("input mouse pos: " + Input.mousePosition);
         //Debug.Log("mouseworldpos: " + mouseWorldPos);
     }
@@ -112,7 +108,7 @@ public class PlayerController : MonoBehaviour
         if (!isWalkPressed) {
             animator.SetBool(isWalkingHash, false);
         }
-        if (isAttackPressed && !isAttacking) {
+        if (isAttackPressed) {
             animator.SetTrigger("isAttacking");
         }
     }
@@ -125,7 +121,6 @@ public class PlayerController : MonoBehaviour
     void OnAttack(InputAction.CallbackContext callback)
     {
         isAttackPressed = callback.ReadValueAsButton();
-        isAttacking = false;
     }
 
     private void OnEnable()

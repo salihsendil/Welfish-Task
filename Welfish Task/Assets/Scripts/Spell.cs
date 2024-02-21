@@ -9,7 +9,7 @@ public class Spell : MonoBehaviour
     [SerializeField] GameObject speelAPrefab;
     [SerializeField] AudioClip[] spellSfxs;
     bool canFire = true;
-    float fireDelay = 1f;
+    float fireDelay = 0.3f;
 
 
     // Start is called before the first frame update
@@ -21,7 +21,7 @@ public class Spell : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerController.IsAttackPressed && !playerController.IsAttacking && canFire) {
+        if ((playerController.IsAttackPressed)&& canFire) {
             StartCoroutine(Fire());
         }
     }
@@ -31,9 +31,9 @@ public class Spell : MonoBehaviour
         canFire = false;
         Instantiate(speelAPrefab, spellPoint.position, transform.rotation);
         AudioSource.PlayClipAtPoint(spellSfxs[Random.Range(0,spellSfxs.Length)], transform.position, 1.3f);
-        playerController.IsAttacking = true;
+        //playerController.IsAttacking = true;
         yield return new WaitForSeconds(fireDelay);
-        playerController.IsAttacking = false;
+        //playerController.IsAttacking = false;
         canFire = true;
     }
 

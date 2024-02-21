@@ -13,6 +13,7 @@ public class ZombieController : MonoBehaviour
     [SerializeField] AudioClip hitSfx;
     GameObject target;
     int attackDamage = 15;
+    int killScore = 50;
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +28,11 @@ public class ZombieController : MonoBehaviour
     void Update()
     {
         enemy.SetDestination(playerController.transform.position);
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag=="Player") {
+        if (other.tag == "Player") {
             animator.SetBool(isAttackingHash, true);
             target = other.gameObject;
         }
@@ -56,6 +56,11 @@ public class ZombieController : MonoBehaviour
     public void AttackTarget()
     {
         target.GetComponent<Health>().TakeDamage(attackDamage);
+    }
+
+    private void OnDestroy()
+    {
+        FindObjectOfType<ScoreKeeper>().AddScore(killScore);
     }
 
 }
