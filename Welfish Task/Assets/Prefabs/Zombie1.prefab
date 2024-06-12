@@ -1723,8 +1723,8 @@ GameObject:
   - component: {fileID: 7389507112651452681}
   - component: {fileID: 1175332244}
   - component: {fileID: 1175332245}
-  - component: {fileID: 1175332243}
   - component: {fileID: 318439070}
+  - component: {fileID: 6360944408311774274}
   m_Layer: 2
   m_Name: Zombie1
   m_TagString: Enemy
@@ -1765,7 +1765,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7389507112651452681
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1782,7 +1782,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!195 &1175332244
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1819,20 +1819,6 @@ CapsuleCollider:
   m_Height: 1.98
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &1175332243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4493914613880827488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4da71855cfbc62b40b2a89f328798316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 1175332244}
-  hitSfx: {fileID: 8300000, guid: 146160cd9b859244e969acb6249cb5e6, type: 3}
 --- !u!114 &318439070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1847,6 +1833,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHealth: 100
   currentHealth: 0
+--- !u!114 &6360944408311774274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493914613880827488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4da71855cfbc62b40b2a89f328798316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSfx: {fileID: 8300000, guid: 146160cd9b859244e969acb6249cb5e6, type: 3}
+  attackDamage: 15
+  killScore: 50
 --- !u!1 &4710940672626480558
 GameObject:
   m_ObjectHideFlags: 0

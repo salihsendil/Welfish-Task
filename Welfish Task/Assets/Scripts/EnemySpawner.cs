@@ -48,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
             if (spawnDelay > 1f) {
                 spawnDelay -= Time.deltaTime;
             }
-            Debug.Log(spawnDelay);
+            //Debug.Log(spawnDelay);
             yield return new WaitForSeconds(spawnDelay);
             Destroy(vfxInstantiate);
         }
