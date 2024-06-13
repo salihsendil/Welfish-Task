@@ -6,7 +6,7 @@ public class EnemyProjectile : Projectile
 {
     private void Start()
     {
-        moveSpeed = 8;
+        moveSpeed = 10;
     }
 
     public override void OnTriggerEnter(Collider other)

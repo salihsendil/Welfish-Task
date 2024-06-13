@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     Vector3 movementVector;
     Vector3 mousePos;
     Vector3 mouseWorldPos;
-    [SerializeField] float moveSpeed = 5.0f;
+    [SerializeField] float moveSpeed = 15.0f;
 
     //Gravity Variables
     float gravity = -9.81f;

@@ -11,6 +11,7 @@ public class ZombieRangedFighter : ZombieBase
     public override void Update()
     {
         base.Update();
+        moveSpeed = 6f;
         Debug.Log(CalculateDistanceToPlayer());
         AttackTarget();
     }

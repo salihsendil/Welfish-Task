@@ -16,7 +16,7 @@ public abstract class ZombieBase : MonoBehaviour
 
     float distance;
     protected float attackRange = 1f;
-    protected float moveSpeed = 3f;
+    protected float moveSpeed = 8f;
 
     // Start is called before the first frame update
     void Start()
