@@ -4,27 +4,31 @@ using UnityEngine;
 
 public class ZombieRangedFighter : ZombieBase
 {
-    float attackRange = 15f;
+
+    [SerializeField] GameObject spell;
+    [SerializeField] Transform spellPoint;
 
     public override void Update()
     {
         base.Update();
         Debug.Log(CalculateDistanceToPlayer());
-        CalculateDistanceToPlayer();
         AttackTarget();
     }
 
     public override void AttackTarget()
     {
-        if (enemy.stoppingDistance >= CalculateDistanceToPlayer()) {
-            Debug.LogWarning("saldýrýyom");
+        attackRange = 15f;
+        if (attackRange >= CalculateDistanceToPlayer()) {
+            animator.SetBool(isAttackingHash, true);
+        }
+        else {
+            animator.SetBool(isAttackingHash, false);
         }
     }
 
-
-    float CalculateDistanceToPlayer()
+    void Fire()
     {
-        float distance = Vector3.Distance(transform.position, playerController.transform.position);
-        return distance;
+        Instantiate(spell, spellPoint.position, transform.rotation);
     }
+
 }

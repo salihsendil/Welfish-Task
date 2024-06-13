@@ -7,7 +7,6 @@ public abstract class ZombieBase : MonoBehaviour
 {
     protected Animator animator;
     protected int isAttackingHash;
-    protected NavMeshAgent enemy;
     protected PlayerController playerController;
     public AudioClip hitSfx;
     public GameObject target;
@@ -15,12 +14,15 @@ public abstract class ZombieBase : MonoBehaviour
     public int attackDamage = 15;
     public int killScore = 50;
 
+    float distance;
+    protected float attackRange = 1f;
+    protected float moveSpeed = 3f;
+
     // Start is called before the first frame update
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
         animator = GetComponent<Animator>();
-        enemy = GetComponent<NavMeshAgent>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
 
         isAttackingHash = Animator.StringToHash("isAttacking");
@@ -29,8 +31,21 @@ public abstract class ZombieBase : MonoBehaviour
     // Update is called once per frame
     virtual public void Update()
     {
-        if (playerController) {
-            enemy.SetDestination(playerController.transform.position);
+        transform.LookAt(playerController.transform.position);
+        Chase();
+        Stop();
+    }
+    protected void Chase()
+    {
+        if (CalculateDistanceToPlayer() > attackRange) {
+            transform.position = Vector3.MoveTowards(transform.position, playerController.transform.position, moveSpeed * Time.deltaTime);
+        }
+    }
+
+    protected void Stop()
+    {
+        if (attackRange >= CalculateDistanceToPlayer()) {
+            transform.position = transform.position;
         }
     }
 
@@ -42,6 +57,12 @@ public abstract class ZombieBase : MonoBehaviour
         else {
             animator.SetBool(isAttackingHash, false);
         }
+    }
+
+    protected float CalculateDistanceToPlayer()
+    {
+        float distance = Vector3.Distance(transform.position, playerController.transform.position);
+        return distance;
     }
 
     private void OnDestroy()
